@@ -5,12 +5,28 @@ class Cache:
         self.id = cache_id
         self.size = size
         self.videos = videos
+        self.isModified = False
+
+        if len(videos) == 0:
+            self.freespace = size
+        else:
+            self.freespace = self.get_free_space()
 
     def add_video(self, video):
-        self.videos.append(video)
+        if self.get_free_space() > video.size:
+            self.videos.append(video)
+            self.isModified = True
+            return True
+        else:
+            return False
 
     def remove_video(self, video):
         self.videos.remove(video)
+        self.isModified = True
 
     def get_free_space(self):
-        return size - sum([v.size for v in self.videos])
+        if self.isModified:
+            self.freespace  = size - sum([v.size for v in self.videos])
+            self.isModified = False
+
+        return self.freespace
