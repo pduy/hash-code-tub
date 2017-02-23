@@ -30,3 +30,9 @@ class Cache:
             self.isModified = False
 
         return self.freespace
+
+    def __str__(self):
+        return "cache id = " + self.cache_id + "\n" \
+                "size = " + self.size + "\n" \
+                "videos = " + [str(v) for v in self.videos]
+
