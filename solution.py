@@ -9,8 +9,8 @@ def find_solution(candidates, caches, videos):
     fulfilled_requests = set()
     for c in candidates:
         if not candidate_id(c) in fulfilled_requests:
-            is_full = caches[c.cache_id].add_video(videos[c.video_id])
-            if is_full:
+            did_insert = caches[c.cache_id].add_video(videos[c.video_id])
+            if not did_insert:
                 full_caches.add(c.cache_id)
                 if len(full_caches) == number_of_caches:
                     break

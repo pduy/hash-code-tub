@@ -26,7 +26,7 @@ class Cache:
 
     def get_free_space(self):
         if self.isModified:
-            self.freespace  = size - sum([v.size for v in self.videos])
+            self.freespace  = self.size - sum([v.size for v in self.videos])
             self.isModified = False
 
         return self.freespace
