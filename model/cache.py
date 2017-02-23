@@ -14,15 +14,17 @@ class Cache:
 
     def add_video(self, video):
         if self.get_free_space() > video.size:
-            self.videos.append(video)
-            self.isModified = True
+            if video.id not in [v.id for v in self.videos]:
+                self.videos.append(video)
+                self.isModified = True
             return True
         else:
             return False
 
-    def remove_video(self, video):
-        self.videos.remove(video)
-        self.isModified = True
+    #TODO: check video id instead
+    #def remove_video(self, video):
+    #    self.videos.remove(video)
+    #    self.isModified = True
 
     def get_free_space(self):
         if self.isModified:
