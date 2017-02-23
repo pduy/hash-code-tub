@@ -92,7 +92,7 @@ def generate_candidates(requests, endpoints, videos):
         ep = endpoints[r.endpoint_id]
         for cache_id in ep.cache_map.keys():
             latency_saving = ep.data_center_latency - ep.cache_map[cache_id]
-            reward = r.n_requests * latency_saving / videos[r.video_id].size
+            reward = 1.0 * r.n_requests * latency_saving / videos[r.video_id].size
             candidate = Candidate(r.video_id, r.endpoint_id, reward, cache_id)
             candidates.append(candidate)
     return candidates
@@ -101,7 +101,7 @@ def generate_candidates(requests, endpoints, videos):
 def main():
     (caches, endpoints, requests, videos) = parseInputs()
     candidates = generate_candidates(requests, endpoints, videos)
-    assigned_caches = find_solution(candidates, caches)
+    assigned_caches = find_solution(candidates, caches, videos)
     write_solution(assigned_caches)
     # your program here
 
