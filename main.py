@@ -6,6 +6,7 @@ from model.candidate import Candidate
 from model.endpoint import Endpoint
 from model.request import Request
 from model.video import Video
+from solution import find_solution, write_solution
 
 from sys import argv
 
@@ -85,9 +86,23 @@ def parseInputs():
     return (caches, endpoints, requests, videos)
 
 
+def generate_candidates(requests, endpoints, videos):
+    candidates = []
+    for r in requests:
+        ep = endpoints[r.endpoint_id]
+        for cache_id in ep.cache_map.keys():
+            latency_saving = ep.data_center_latency - ep.cache_map[cache_id]
+            reward = r.n_requests * latency_saving / videos[r.video_id].size
+            candidate = Candidate(r.video_id, r.endpoint_id, reward, cache_id)
+            candidates.append(candidate)
+    return candidates
+
 
 def main():
-    (caches, endpoints, requests, videos ) = parseInputs()
+    (caches, endpoints, requests, videos) = parseInputs()
+    candidates = generate_candidates(requests, endpoints, videos)
+    assigned_caches = find_solution(candidates, caches)
+    write_solution(assigned_caches)
     # your program here
 
 
