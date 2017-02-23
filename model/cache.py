@@ -1,7 +1,7 @@
 import video
 
 class Cache:
-    def __init__(self, cache_id, size, videos):
+    def __init__(self, cache_id, size, videos=[]):
         self.id = cache_id
         self.size = size
         self.videos = videos
