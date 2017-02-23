@@ -30,3 +30,13 @@ class Cache:
             self.isModified = False
 
         return self.freespace
+
+    def __str__(self):
+        return "{ cache id = " + str(self.id) + "," \
+                "size = " +      str(self.size) + "," \
+                "videos = " + [str(v) for v in self.videos] + "}"
+
+    def __repr__(self):
+        return "{ cache id = " + str(self.id) + "," \
+                "size = " +      str(self.size) + "," \
+                "videos = " + str([str(v) for v in self.videos]) + "}"
