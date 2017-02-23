@@ -5,6 +5,11 @@ class Request:
         self.n_requests = n_requests
 
     def __str__(self):
-        return "video id = " + self.video_id + "\n" \
-                "endpoint_id = " + self.endpoint_id + "\n" \
-                "n_requests = " + self.n_requests
+        return "{ video id = " + str(self.video_id) + "," + \
+                "endpoint_id = " + str(self.endpoint_id) + "," + \
+                "n_requests = " + str(self.n_requests) + "}"
+
+    def __repr__(self):
+        return "{ video id = " + str(self.video_id) + "," + \
+                "endpoint_id = " + str(self.endpoint_id) + "," + \
+                "n_requests = " + str(self.n_requests) + "}"

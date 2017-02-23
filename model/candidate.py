@@ -6,7 +6,13 @@ class Candidate:
         self.cache_id = cache_id
 
     def __str__(self):
-        return "video id = " + self.video_id + "\n" \
-                "endpoint_id = " + self.endpoint_id + "\n" \
-                "reward = " + self.reward + "\n" \
-                "cache id = " + self.cache_id
+        return "{video id = " +     str(self.video_id) + "," \
+                "endpoint_id = " +  str(self.endpoint_id) + "," \
+                "reward = " +       str(self.reward) + "," \
+                "cache id = " +     str(self.cache_id) + "}"
+
+    def __repr__(self):
+        return "{video id = " +     str(self.video_id) + "," \
+                "endpoint_id = " +  str(self.endpoint_id) + "," \
+                "reward = " +       str(self.reward) + "," \
+                "cache id = " +     str(self.cache_id) + "}"

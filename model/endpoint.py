@@ -5,6 +5,11 @@ class Endpoint:
         self.data_center_latency = data_center_latency
 
     def __str__(self):
-        return "endpoint id = " + self.endpoint_id + "\n" \
-                "cache_map = " + str(self.cache_map) + "\n" \
-                "data_center_latency = " + self.data_center_latency
+        return "{endpoint id = " + str(self.id) + "," \
+                "cache_map = " + str(self.cache_map) + "," \
+                "data_center_latency = " + str(self.data_center_latency) + "}"
+
+    def __repr__(self):
+        return "{endpoint id = " + str(self.id) + "," \
+                "cache_map = " + str(self.cache_map) + "," \
+                "data_center_latency = " + str(self.data_center_latency) + "}"

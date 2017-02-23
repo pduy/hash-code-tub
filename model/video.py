@@ -4,5 +4,9 @@ class Video:
         self.size = size
     
     def __str__(self):
-        return "video id = " + self.id + "\n" \
-                "video size = " + self.size
+        return "{ video id = " + str(self.id) + " , " + \
+               "video size = " + str(self.size) + "}"
+
+    def __repr__(self):
+        return "{ video id = " + str(self.id) + " , " + \
+                 "video size = " + str(self.size) + "}"
