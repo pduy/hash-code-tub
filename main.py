@@ -41,7 +41,7 @@ def parseInputs():
 
     caches = []
     for i in range(no_caches):
-        caches.append(Cache(i, cache_size))
+        caches.append(Cache(i, cache_size, []))
 
     debug(caches)
 
